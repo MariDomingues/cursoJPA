@@ -54,9 +54,9 @@ public class CategoriaService {
         }
     }
 
-    public CategoriaEntity load(int pIdProduto) throws Exception {
+    public CategoriaEntity load(int pIdCategoria) throws Exception {
 
-        return (CategoriaEntity) Conexao.consult(CategoriaEntity.class, pIdProduto);
+        return (CategoriaEntity) Conexao.consult(CategoriaEntity.class, pIdCategoria);
     }
 
     public List<CategoriaEntity> consult() throws Exception {
