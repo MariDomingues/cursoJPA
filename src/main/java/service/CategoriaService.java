@@ -56,14 +56,12 @@ public class CategoriaService {
 
     public CategoriaEntity load(int pIdCategoria) throws Exception {
 
-        Conexao.begin();
         return (CategoriaEntity) Conexao.consult(CategoriaEntity.class, pIdCategoria);
     }
 
     public List<CategoriaEntity> consult() throws Exception {
 
-        Conexao.begin();
         //o SELECT é uma linguagem que chama JPQL
-        return Conexao.consult(CategoriaEntity.class, "SELECT p FROM Produto AS p").getResultList();
+        return Conexao.consult(CategoriaEntity.class, "SELECT c FROM CategoriaEntity AS c").getResultList();
     }
 }

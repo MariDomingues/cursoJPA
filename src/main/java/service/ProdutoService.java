@@ -5,7 +5,6 @@ import entity.ProdutoEntity;
 import model.vo.ProdutoConsultaVO;
 import repository.ProdutoDAO;
 
-import javax.persistence.Query;
 import java.util.List;
 
 public class ProdutoService {
@@ -59,7 +58,7 @@ public class ProdutoService {
     public List<ProdutoEntity> consult() throws Exception {
 
         //o SELECT é uma linguagem que chama JPQL
-        return Conexao.consult(ProdutoEntity.class, "SELECT p FROM ProdutoEntity AS p WHERE 1 = 1").getResultList();
+        return Conexao.consult(ProdutoEntity.class, "SELECT p FROM ProdutoEntity AS p").getResultList();
     }
 
     public List<ProdutoEntity> consult(ProdutoConsultaVO pFiltro) throws Exception {
