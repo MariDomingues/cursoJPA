@@ -1,18 +1,24 @@
-package model;
+package model.vo;
 
-import jakarta.persistence.*;
+import entity.CategoriaEntity;
 
-@Entity
-@Table(name = "produto")
-public class Produto {
+import java.time.LocalDate;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
-//    @Column(name = "nome")
-    private String nome;
-    private String descricao;
-    private double preco;
+public class ProdutoConsultaVO {
+
+    private int id = -1;
+    private String nome = "";
+    private String descricao = "";
+    private double preco = 0;
+    private String categoria = "";
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
     public int getId() {
         return id;
