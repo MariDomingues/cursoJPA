@@ -37,7 +37,7 @@ public class Main {
         ProdutoConsultaVO filtro = new ProdutoConsultaVO();
         filtro.setPreco(800);
         filtro.setNome("Xiaomi Redmi");
-        filtro.setDescricao("Muito Bom!");
+        filtro.setDescricao("Muito bom!");
         filtro.setId(1);
 
         List<ProdutoEntity> vProduto = produtoService.consult(filtro);
