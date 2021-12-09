@@ -1,10 +1,6 @@
-package model.vo;
+package model.dto;
 
-import entity.CategoriaEntity;
-
-import java.time.LocalDate;
-
-public class ProdutoConsultaVO {
+public class ProdutoConsultaDto {
 
     private int id = -1;
     private String nome = "";

@@ -2,14 +2,14 @@ package repository;
 
 import classe.Conexao;
 import entity.ProdutoEntity;
-import model.vo.ProdutoConsultaVO;
+import model.dto.ProdutoConsultaDto;
 
 import javax.persistence.Query;
 import java.util.List;
 
 public class ProdutoDAO {
 
-    public List<ProdutoEntity> consult(ProdutoConsultaVO pFiltro) throws Exception {
+    public List<ProdutoEntity> consult(ProdutoConsultaDto pFiltro) throws Exception {
 
         //o SELECT é uma linguagem que chama JPQL
         StringBuilder jpql = new StringBuilder();
