@@ -17,7 +17,8 @@ public class ProdutoEntity extends GenericEntity {
     private LocalDate dataCadastro = LocalDate.now();
 
 //    @Enumerated(EnumType.STRING)
-    @ManyToOne
+    //so carrega quando chamar pelo atributo
+    @ManyToOne(fetch = FetchType.LAZY)
     private CategoriaEntity categoria;
 
     public int getId() {

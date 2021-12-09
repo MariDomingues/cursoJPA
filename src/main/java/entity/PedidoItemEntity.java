@@ -12,10 +12,10 @@ public class PedidoItemEntity extends GenericEntity {
     private double precoUnitario;
     private int quantidade;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private PedidoEntity pedido;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private ProdutoEntity produto;
 
     public int getId() {

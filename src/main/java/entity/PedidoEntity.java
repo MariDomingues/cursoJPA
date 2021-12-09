@@ -15,7 +15,7 @@ public class PedidoEntity extends GenericEntity {
     private LocalDate data = LocalDate.now();
     private double valorTotal;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private ClienteEntity cliente;
 
     /*precisa ser indicado para o JPA quando acontece um relacionamento bidirecional
