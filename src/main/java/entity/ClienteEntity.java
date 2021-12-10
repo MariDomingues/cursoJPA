@@ -1,5 +1,7 @@
 package entity;
 
+import classe.DadosPessoais;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,26 +11,30 @@ public class ClienteEntity extends GenericEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nome;
-    private String cpf;
+
+    @Embedded //separa as colunas sem criar uma nova tabela
+    private DadosPessoais dadosPessoais;
+
+    public ClienteEntity() {
+    }
+
+    public ClienteEntity(String nome, String cpf) {
+        this.dadosPessoais = new DadosPessoais(nome, cpf);
+    }
 
     public int getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public DadosPessoais getDadosPessoais() {
+        return dadosPessoais;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getNome() {
+        return this.dadosPessoais.getNome();
     }
 
     public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+        return this.dadosPessoais.getCpf();
     }
 }

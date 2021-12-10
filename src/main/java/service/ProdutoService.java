@@ -1,6 +1,6 @@
 package service;
 
-import classe.Conexao;
+import repository.Conexao;
 import entity.ProdutoEntity;
 import model.dto.ProdutoConsultaDto;
 import repository.ProdutoDAO;

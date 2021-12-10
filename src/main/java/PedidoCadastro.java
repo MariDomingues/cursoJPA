@@ -1,4 +1,4 @@
-import classe.Conexao;
+import repository.Conexao;
 import entity.ClienteEntity;
 import entity.PedidoEntity;
 import entity.PedidoItemEntity;

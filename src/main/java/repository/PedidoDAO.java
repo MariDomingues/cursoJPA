@@ -1,6 +1,5 @@
 package repository;
 
-import classe.Conexao;
 import entity.PedidoEntity;
 import model.vo.PedidoRelatorioVendaVO;
 

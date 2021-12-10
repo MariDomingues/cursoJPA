@@ -1,4 +1,4 @@
-package classe;
+package repository;
 
 import entity.GenericEntity;
 

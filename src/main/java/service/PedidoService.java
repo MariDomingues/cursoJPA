@@ -1,6 +1,6 @@
 package service;
 
-import classe.Conexao;
+import repository.Conexao;
 import entity.PedidoEntity;
 import model.vo.PedidoRelatorioVendaVO;
 import repository.PedidoDAO;

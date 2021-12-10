@@ -1,6 +1,5 @@
 package repository;
 
-import classe.Conexao;
 import entity.ProdutoEntity;
 import model.dto.ProdutoConsultaDto;
 

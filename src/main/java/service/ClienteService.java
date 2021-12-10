@@ -1,6 +1,6 @@
 package service;
 
-import classe.Conexao;
+import repository.Conexao;
 import entity.ClienteEntity;
 
 import java.util.List;
@@ -9,10 +9,7 @@ public class ClienteService {
 
     public void criarCliente() throws Exception {
 
-        ClienteEntity cliente = new ClienteEntity();
-        cliente.setNome("Mariane");
-        cliente.setCpf("123.485.452.52");
-
+        ClienteEntity cliente = new ClienteEntity("Mariane", "123.485.452.52");
         insert(cliente);
     }
 
