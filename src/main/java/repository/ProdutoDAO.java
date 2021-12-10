@@ -5,6 +5,10 @@ import entity.ProdutoEntity;
 import model.dto.ProdutoConsultaDto;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class ProdutoDAO {
@@ -60,5 +64,37 @@ public class ProdutoDAO {
         }
 
         return query.getResultList();
+    }
+    public List<ProdutoEntity> consultCriteria(ProdutoConsultaDto pFiltro) throws Exception {
+
+        CriteriaBuilder criteriaBuilder = Conexao.getCriteriaBuilder();
+
+        CriteriaQuery<ProdutoEntity> query = criteriaBuilder.createQuery(ProdutoEntity.class);
+        Root<ProdutoEntity> from = query.from(ProdutoEntity.class);
+
+        Predicate filtro = criteriaBuilder.and();
+        if (pFiltro.getId() >= 0) {
+            filtro = criteriaBuilder.and(filtro, criteriaBuilder.equal(from.get("id"), pFiltro.getId()));
+        }
+
+        if (!pFiltro.getDescricao().isEmpty()) {
+            filtro = criteriaBuilder.and(filtro, criteriaBuilder.equal(from.get("descricao"), pFiltro.getDescricao()));
+        }
+
+        if (!pFiltro.getNome().isEmpty()) {
+            filtro = criteriaBuilder.and(filtro, criteriaBuilder.equal(from.get("nome"), pFiltro.getNome()));
+        }
+
+        if (pFiltro.getPreco() > 0) {
+            filtro = criteriaBuilder.and(filtro, criteriaBuilder.equal(from.get("preco"), pFiltro.getPreco()));
+        }
+
+        if (!pFiltro.getCategoria().isEmpty()) {
+            filtro = criteriaBuilder.and(filtro, criteriaBuilder.equal(from.get("categoria"), pFiltro.getCategoria()));
+        }
+
+        query.where(filtro);
+
+        return Conexao.consult(query).getResultList();
     }
 }

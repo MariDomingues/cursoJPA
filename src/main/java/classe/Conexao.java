@@ -3,6 +3,8 @@ package classe;
 import entity.GenericEntity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 public class Conexao {
 
@@ -15,6 +17,10 @@ public class Conexao {
         //nome do banco
         factory = Persistence.createEntityManagerFactory(pNomeBanco);
         Conexao.em = factory.createEntityManager();
+    }
+
+    public static CriteriaBuilder getCriteriaBuilder() {
+        return Conexao.em.getCriteriaBuilder();
     }
 
     public static void begin() {
@@ -59,6 +65,11 @@ public class Conexao {
     public static Query consult(Class pClass, String pQuery) {
         //busca a informação do banco de dados
         return Conexao.em.createQuery(pQuery, pClass);
+    }
+
+    public static Query consult(CriteriaQuery pCriteria) {
+        //busca a informação do banco de dados
+        return Conexao.em.createQuery(pCriteria);
     }
 
     public static void delete(GenericEntity pEntity) {

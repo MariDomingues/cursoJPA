@@ -1,6 +1,7 @@
 package repository;
 
 import classe.Conexao;
+import entity.PedidoEntity;
 import model.vo.PedidoRelatorioVendaVO;
 
 import java.util.List;
@@ -29,6 +30,26 @@ public class PedidoDAO {
                 .append(" GROUP BY pr.nome")
                 .append(" ORDER BY pi.quantidade DESC");
 
-        return Conexao.consult(PedidoRelatorioVendaVO.class, jpql.toString()).getResultList();
+        return Conexao.consult(PedidoRelatorioVendaVO.class, jpql.toString())
+                .getResultList();
+    }
+
+    public PedidoEntity getPedidoCliente(int pIdPedido) {
+
+        /*
+        quando os atributos estão como LAZY, ele deixa de carregar as tabelas
+        que tem uma ligação, então um jeito de acessa-las é com o JOIN FETCH.
+        Então especificamente nessa consulta é como se o relacionamente entre
+        as tabelas voltassem a ser EAGER
+         */
+        StringBuilder jpql = new StringBuilder()
+                .append("SELECT p")
+                .append(" JOIN FETCH p.cliente")
+                .append(" FROM PedidoEntity p")
+                .append(" WHERE p.id = :id");
+
+        return (PedidoEntity) Conexao.consult(PedidoEntity.class, jpql.toString())
+                .setParameter("id", pIdPedido)
+                .getSingleResult();
     }
 }
