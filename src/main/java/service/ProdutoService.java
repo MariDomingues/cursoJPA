@@ -1,8 +1,8 @@
 package service;
 
-import classe.Conexao;
+import repository.Conexao;
 import entity.ProdutoEntity;
-import model.vo.ProdutoConsultaVO;
+import model.dto.ProdutoConsultaDto;
 import repository.ProdutoDAO;
 
 import java.util.List;
@@ -17,6 +17,27 @@ public class ProdutoService {
 
     public ProdutoService(ProdutoDAO produtoDAO) {
         this.produtoDAO = produtoDAO;
+    }
+
+    public void criarProduto() throws Exception {
+
+        ProdutoEntity produto = new ProdutoEntity();
+        produto.setNome("Xiaomi Redmi");
+        produto.setDescricao("Xiaomi Redmi Note Pro 10");
+        produto.setPreco(800);
+        insert(produto);
+
+        produto = new ProdutoEntity();
+        produto.setNome("PS5");
+        produto.setDescricao("PlayStation 5");
+        produto.setPreco(1800);
+        insert(produto);
+
+        produto = new ProdutoEntity();
+        produto.setNome("MacBook");
+        produto.setDescricao("MacBook Pro");
+        produto.setPreco(3500);
+        insert(produto);
     }
 
     public void insert(ProdutoEntity pProduto) throws Exception {
@@ -61,7 +82,7 @@ public class ProdutoService {
         return Conexao.consult(ProdutoEntity.class, "SELECT p FROM ProdutoEntity AS p").getResultList();
     }
 
-    public List<ProdutoEntity> consult(ProdutoConsultaVO pFiltro) throws Exception {
+    public List<ProdutoEntity> consult(ProdutoConsultaDto pFiltro) throws Exception {
 
         return produtoDAO.consult(pFiltro);
     }

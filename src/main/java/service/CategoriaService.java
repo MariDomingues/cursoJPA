@@ -1,11 +1,29 @@
 package service;
 
-import classe.Conexao;
+import repository.Conexao;
 import entity.CategoriaEntity;
 
 import java.util.List;
 
 public class CategoriaService {
+
+    public void criarCategoria() throws Exception {
+
+        CategoriaEntity categoria = new CategoriaEntity();
+        categoria.setDescricao("Celular");
+        insert(categoria);
+
+        categoria.setDescricao("Celular Internacional");
+        update(categoria);
+
+        categoria = new CategoriaEntity();
+        categoria.setDescricao("VideoGame");
+        insert(categoria);
+
+        categoria = new CategoriaEntity();
+        categoria.setDescricao("Informatica");
+        insert(categoria);
+    }
 
     public void insert(CategoriaEntity pCategoria) throws Exception {
 

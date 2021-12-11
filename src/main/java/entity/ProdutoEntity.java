@@ -5,6 +5,10 @@ import java.time.LocalDate;
 
 @Entity
 @Table(schema = "public", name = "produto")
+//cria uma unica tabela para todos os atributos que herdam da classe produto
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//cria uma tabela para cada classe que herda da classe produto
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class ProdutoEntity extends GenericEntity {
 
     @Id
@@ -17,7 +21,8 @@ public class ProdutoEntity extends GenericEntity {
     private LocalDate dataCadastro = LocalDate.now();
 
 //    @Enumerated(EnumType.STRING)
-    @ManyToOne
+    //so carrega quando chamar pelo atributo
+    @ManyToOne(fetch = FetchType.LAZY)
     private CategoriaEntity categoria;
 
     public int getId() {

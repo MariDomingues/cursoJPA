@@ -1,40 +1,27 @@
-
-import classe.Conexao;
-import entity.CategoriaEntity;
+import repository.Conexao;
 import entity.ProdutoEntity;
-import model.vo.ProdutoConsultaVO;
+import model.dto.ProdutoConsultaDto;
 import service.CategoriaService;
 import service.ProdutoService;
 
 import java.util.List;
 
-public class Main {
+public class PerformanceConsultas {
 
     public static void main(String[] args) throws Exception {
 
         Conexao.abrirConexao("loja");
 
-        CategoriaEntity categoria = new CategoriaEntity();
-        categoria.setDescricao("Celular");
-
         CategoriaService categoriaService = new CategoriaService();
-        categoriaService.insert(categoria);
-
-        categoria.setDescricao("Celular Internacional");
-        categoriaService.update(categoria);
-
-        ProdutoEntity celular = new ProdutoEntity();
-        celular.setNome("Xiaomi Redmi");
-        celular.setDescricao("Muito bom!");
-        celular.setPreco(800);
+        categoriaService.criarCategoria();
 
         ProdutoService produtoService = new ProdutoService();
-        produtoService.insert(celular);
+        produtoService.criarProduto();
 
         ProdutoEntity produtoConsulta = produtoService.load(1);
         System.out.println(produtoConsulta.getPreco());
 
-        ProdutoConsultaVO filtro = new ProdutoConsultaVO();
+        ProdutoConsultaDto filtro = new ProdutoConsultaDto();
         filtro.setPreco(800);
         filtro.setNome("Xiaomi Redmi");
         filtro.setDescricao("Muito bom!");
